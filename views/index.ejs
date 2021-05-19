@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form method="POST" action="/api/message/new" class="twit-form">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">@</span>
+        <input type="text"  name="user"  class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">Message</span>
+        <textarea class="form-control" aria-label="With textarea"  name="text"></textarea>
+      </div>
+      <br>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-secondary" type="submit" value="Submit">Twit</button>
+      </div>
+   </form>
+
+   <br>
+
+  <ul class="list-group" class="twit-form">
+    <% messages.forEach(function(message,index){ %>
+      <li class="list-group-item"> 
+         <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= message.user %></h5>
+            <h6 class="card-text"><%= message.text %></h6>
+            <p class="card-subtitle mb-2 text-muted"><%= message.added %></p>
+          </div>
+        </div> 
+      </li>
+    <% }) %>
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
+  </body>
+</html>
